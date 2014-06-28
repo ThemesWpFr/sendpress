@@ -223,11 +223,11 @@ class SendPress_Lists_Table extends WP_List_Table {
        
         $columns = array(
             'cb'        => '<input type="checkbox" />', //Render a checkbox instead of text
-            'title' => 'Name',
-            'count_subscribers' => 'Active',
-            'last_send_date' => 'Last Send',
-            //'count_bounced' => 'Bounced',
-            'actions'=> 'Subscribers'
+            'title' => __('Name','sendpress'),
+            'count_subscribers' => __('Active','sendpress'),
+            'last_send_date' => __('Last Send','sendpress'),
+            //'count_bounced' => 'Bounced','sendpress'),
+            'actions'=> __('Subscribers','sendpress')
 
             
         );
@@ -276,7 +276,7 @@ class SendPress_Lists_Table extends WP_List_Table {
      **************************************************************************/
     function get_bulk_actions() {
         $actions = apply_filters('sendpress_list_table_bulk_actions',array(
-            'delete-lists-bulk'    => 'Delete'
+            'delete-lists-bulk'    => __('Delete','sendpress'),
         ));
 
 
