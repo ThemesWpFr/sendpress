@@ -98,20 +98,20 @@ class SendPress_Lists_Table extends WP_List_Table {
 
 
                 $str = '<div class="inline-buttons">
-                    <a class="btn btn-info" href="?page='.$_REQUEST['page'].'&view=subscribers&listID='.$item->ID.'"><span class="glyphicon glyphicon-edit"></span> View/Edit</a> ';
+                    <a class="btn btn-info" href="?page='.$_REQUEST['page'].'&view=subscribers&listID='.$item->ID.'"><span class="glyphicon glyphicon-edit"></span> '.__('View/Edit','sendpress').'</a> ';
                 $role = get_post_meta($item->ID,'sync_role',true);
                 $add = '';
                 if($role != 'none' && $role != false){
-                    $str .= "<a class='btn btn-primary' href='". SendPress_Admin::link('Subscribers_Sync') . "&listID=".$item->ID."'><span class='glyphicon glyphicon-refresh'></span> Sync</a> ";
+                    $str .= "<a class='btn btn-primary' href='". SendPress_Admin::link('Subscribers_Sync') . "&listID=".$item->ID."'><span class='glyphicon glyphicon-refresh'></span> ".__('Sync','sendpress')."</a> ";
                 } else {
                     if(apply_filters( 'sendpress_show_import_button', true, $this->_sendpress )){
-                         $str .=  '<a class="list-import btn btn-primary" href="?page='.$_REQUEST['page'].'&view=csvimport&listID='. $item->ID .'"><span class="glyphicon glyphicon-upload"></span> Import</a> ';
+                         $str .=  '<a class="list-import btn btn-primary" href="?page='.$_REQUEST['page'].'&view=csvimport&listID='. $item->ID .'"><span class="glyphicon glyphicon-upload"></span> '.__('Import','sendpress').'</a> ';
                     }
                     
-                    $str .= '<a class="btn btn-primary" href="?page='.$_REQUEST['page'].'&view=add&listID='. $item->ID .'"><span class="glyphicon glyphicon-user"></span> Add</a> ';
-                    $str .='<a class="btn btn-primary" href="?page='.$_REQUEST['page'].'&action=export-list&listID='. $item->ID .'"><span class="glyphicon glyphicon-download"></span> Export</a> ';
+                    $str .= '<a class="btn btn-primary" href="?page='.$_REQUEST['page'].'&view=add&listID='. $item->ID .'"><span class="glyphicon glyphicon-user"></span> '.__('Add','sendpress').'</a> ';
+                    $str .='<a class="btn btn-primary" href="?page='.$_REQUEST['page'].'&action=export-list&listID='. $item->ID .'"><span class="glyphicon glyphicon-download"></span> '.__('Export','sendpress').'</a> ';
                     
-                    $str .=    '<a class="btn btn-primary" href="'. SendPress_Admin::link('Subscribers_Listform', array('listID' => $item->ID)) .'"><span class="glyphicon glyphicon-list"></span> Form</a> ';
+                    $str .=    '<a class="btn btn-primary" href="'. SendPress_Admin::link('Subscribers_Listform', array('listID' => $item->ID)) .'"><span class="glyphicon glyphicon-list"></span> '.__('Form','sendpress').'</a> ';
                 }
 
                
@@ -144,7 +144,7 @@ class SendPress_Lists_Table extends WP_List_Table {
         
         //Build row actions
         $actions = array(
-            'edit' => sprintf('<a href="?page=%s&view=%s&listID=%s">Edit</a>', 
+            'edit' => sprintf('<a href="?page=%s&view=%s&listID=%s">'.__('Edit','sendpress').'</a>', 
                 /*$1%s*/ 'sp-subscribers',
                 /*$2%s*/ 'listedit', 
                 /*$3%s*/ $item->ID
@@ -158,7 +158,7 @@ class SendPress_Lists_Table extends WP_List_Table {
         }
         $t = '';
         if( get_post_meta($item->ID,'_test_list',true) == 1 ){ 
-           $t = '  <span class="label label-info">Test List</span>';
+           $t = '  <span class="label label-info">'.__('Test List','sendpress').'</span>';
         } 
 
          $role = get_post_meta($item->ID,'sync_role',true);
